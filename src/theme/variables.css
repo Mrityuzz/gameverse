@@ -1,0 +1,28 @@
+:root {
+  --ion-color-primary: #00f0ff;
+  --ion-color-secondary: #ff00c8;
+  --ion-color-tertiary: #ff9900;
+  --ion-color-success: #00ff88;
+  --ion-color-warning: #ffc800;
+  --ion-color-danger: #ff0033;
+  --ion-color-dark: #0a0a0a;
+  --ion-color-medium: #2a2a2a;
+  --ion-color-light: #ffffff; /* MÁS CLARO */
+
+  --ion-background-color: #0a0a0a;
+
+  --ion-font-family: 'Orbitron', sans-serif;
+
+  --ion-card-background: #1a1a1a;
+  --ion-toolbar-background: #121212;
+  --ion-tab-bar-background: #121212;
+  --ion-item-background: #1a1a1a;
+
+  --ion-text-color: #e0e0e0; /* TEXTO CLARO */
+  --ion-input-background: #1f1f1f;
+  --ion-input-color: #ffffff;
+  --ion-label-color: #cccccc;
+
+  --ion-box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  --ion-border-radius: 8px;
+}

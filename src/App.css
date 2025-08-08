@@ -1,0 +1,236 @@
+/* Layout base */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Logo animado */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 1em #646cff88);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 1em #61dafb88);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Tarjeta base */
+.card {
+  padding: 2em;
+}
+
+/* Texto auxiliar */
+.read-the-docs {
+  color: #888;
+}
+
+/* Tarjeta HUD gamer con imagen como fondo */
+.hud-card {
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+.hud-card:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Imagen como fondo completo */
+.hud-card ion-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.4);
+}
+
+/* Overlay de contenido */
+.hud-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  color: #d0d0d0;
+  text-align: left;
+  background: linear-gradient(to top, rgba(10,10,10,0.85), rgba(10,10,10,0.3));
+  border-radius: 10px;
+}
+
+/* Título y subtítulo con estilo gamer */
+.hud-card-content ion-card-title {
+  color: #00c8ff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hud-card-content ion-card-subtitle {
+  color: #ff00c8;
+  font-size: 1rem;
+}
+
+/* Botón gamer discreto */
+.neon-button {
+  background-color: #00c8ff;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 0 6px #00c8ff55;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.neon-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #00c8ff88;
+}
+
+/* Texto brillante más sutil */
+.glow-text {
+  color: #e0e0e0;
+  text-shadow: 0 0 4px #00c8ff, 0 0 8px #00c8ff;
+  font-weight: bold;
+}
+
+/* Fondo con gradiente discreto */
+.gradient-bg {
+  background: linear-gradient(135deg, #0a0a0a, #151515, #1f1f1f);
+}
+
+/* Input gamer con soporte para label flotante */
+ion-item.custom-item {
+  --background: transparent;
+  --color: #ffffff;
+  --padding-start: 0.5rem;
+  --inner-padding-end: 0.5rem;
+  --highlight-color-focused: #00c8ff;
+  --border-color: #00c8ff;
+  --border-radius: 6px;
+  margin-top: 1rem;
+}
+
+ion-item.custom-item ion-label {
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+ion-item.custom-item ion-input,
+ion-item.custom-item ion-textarea {
+  --background: #2a2a2a;
+  --color: #ffffff;
+  font-size: 15px;
+  padding: 0.5rem;
+}
+
+/* Segmento visual */
+.segment-gamer {
+  background-color: #121212;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(255, 0, 200, 0.2);
+}
+
+/* IonSegment personalizado */
+ion-segment-button {
+  --color: #a0a0a0;
+  --background: transparent;
+  --indicator-color: #00c8ff;
+  color: #a0a0a0;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+ion-segment-button.segment-button-checked {
+  --color: #00c8ff;
+  color: #00c8ff;
+}
+
+ion-segment-button:hover {
+  color: #ffffff;
+}
+
+/* Viñetas ultra compactas en listas gamer */
+.gamer-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.gamer-list li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  color: #d0d0d0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.gamer-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: #00c8ff;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* FAB principal estilo gamer */
+.fab-gamer {
+  z-index: 100;
+}
+
+.fab-main {
+  --background: #1f1f1f;
+  --color: #00c8ff;
+  border: 1px solid #00c8ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fab-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+/* Lista de opciones flotantes */
+.fab-list {
+  transition: opacity 0.3s ease;
+}
+
+/* Botones secundarios */
+.fab-option {
+  --background: #2a2a2a;
+  --color: #ffffff;
+  border: 1px solid #444;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease, box-shadow 0.3s ease;
+}
+.fab-option:hover {
+  --background: #00c8ff;
+  --color: #0a0a0a;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
