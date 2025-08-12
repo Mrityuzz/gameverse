@@ -16,7 +16,7 @@ import {
   IonSelect,
   IonSelectOption
 } from "@ionic/react";
-import { Camera, CameraResultType } from "@capacitor/camera";
+import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { useHistory } from "react-router-dom";
 
 export default function NuevoJuego() {
@@ -27,23 +27,39 @@ export default function NuevoJuego() {
   const [genero, setGenero] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const solicitarPermisos = async () => {
+    const result = await Camera.requestPermissions();
+    return result.camera === "granted";
+  };
 
   const tomarFoto = async () => {
+    const permiso = await solicitarPermisos();
+    if (!permiso) {
+      setAlertMessage("La app no tiene permiso para usar la cámara.");
+      setShowAlert(true);
+      return;
+    }
+
     try {
       const imagen = await Camera.getPhoto({
         resultType: CameraResultType.DataUrl,
         quality: 90,
-        allowEditing: false
+        allowEditing: false,
+        source: CameraSource.Camera
       });
       setPortada(imagen.dataUrl);
     } catch (error) {
       console.error("Error al tomar la foto:", error);
+      setAlertMessage("No se pudo acceder a la cámara.");
       setShowAlert(true);
     }
   };
 
   const guardar = () => {
     if (!portada || !titulo || !sinopsis || !genero) {
+      setAlertMessage("Completa todos los campos antes de guardar.");
       setShowAlert(true);
       return;
     }
@@ -80,17 +96,14 @@ export default function NuevoJuego() {
       </IonHeader>
 
       <IonContent className="ion-padding gradient-bg">
-        <div
-          className="hud-card"
-          style={{
-            backgroundColor: "#1a1a1a",
-            borderRadius: "12px",
-            padding: "1.5rem",
-            marginBottom: "2rem",
-            border: "1px solid #2a2a2a",
-            fontFamily: "'Orbitron', sans-serif"
-          }}
-        >
+        <div className="hud-card" style={{
+          backgroundColor: "#1a1a1a",
+          borderRadius: "12px",
+          padding: "1.5rem",
+          marginBottom: "2rem",
+          border: "1px solid #2a2a2a",
+          fontFamily: "'Orbitron', sans-serif"
+        }}>
           <IonCardTitle style={{ color: "#00f0ff", fontSize: "1.2rem", marginBottom: "0.5rem" }}>
             Carga tu misión
           </IonCardTitle>
@@ -98,32 +111,24 @@ export default function NuevoJuego() {
             Sube un nuevo videojuego al Gameverse
           </IonCardSubtitle>
 
-          <IonButton
-            expand="block"
-            onClick={tomarFoto}
-            color="dark"
-            style={{
-              backgroundColor: "#2f2f2f",
-              color: "#00f0ff",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              marginBottom: "1rem"
-            }}
-          >
+          <IonButton expand="block" onClick={tomarFoto} color="dark" style={{
+            backgroundColor: "#2f2f2f",
+            color: "#00f0ff",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            marginBottom: "1rem"
+          }}>
             📸 Tomar portada
           </IonButton>
 
           {portada && (
-            <IonImg
-              src={portada}
-              style={{
-                maxHeight: "200px",
-                margin: "20px auto",
-                display: "block",
-                borderRadius: "8px",
-                border: "1px solid #444"
-              }}
-            />
+            <IonImg src={portada} style={{
+              maxHeight: "200px",
+              margin: "20px auto",
+              display: "block",
+              borderRadius: "8px",
+              border: "1px solid #444"
+            }} />
           )}
 
           <IonInput
@@ -177,17 +182,12 @@ export default function NuevoJuego() {
             <IonSelectOption value="simulacion">Simulación</IonSelectOption>
           </IonSelect>
 
-          <IonButton
-            expand="block"
-            onClick={guardar}
-            color="dark"
-            style={{
-              backgroundColor: "#2f2f2f",
-              color: "#00f0ff",
-              borderRadius: "8px",
-              fontWeight: "bold"
-            }}
-          >
+          <IonButton expand="block" onClick={guardar} color="dark" style={{
+            backgroundColor: "#2f2f2f",
+            color: "#00f0ff",
+            borderRadius: "8px",
+            fontWeight: "bold"
+          }}>
             🚀 Guardar juego
           </IonButton>
         </div>
@@ -196,13 +196,7 @@ export default function NuevoJuego() {
           isOpen={showAlert}
           onDidDismiss={() => setShowAlert(false)}
           header="⚠️ Error"
-          message={
-            !portada
-              ? "Debes tomar una portada"
-              : !genero
-              ? "Selecciona un género"
-              : "Completa todos los campos"
-          }
+          message={alertMessage}
           buttons={["OK"]}
         />
 

@@ -8,10 +8,11 @@ android {
 }
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
-
 dependencies {
-  // Aquí puedes añadir tus dependencias si las necesitas
+    implementation project(':capacitor-camera')
+
 }
+
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
