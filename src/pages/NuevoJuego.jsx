@@ -17,6 +17,7 @@ import {
   IonSelectOption
 } from "@ionic/react";
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
+import { Capacitor } from "@capacitor/core";
 import { useHistory } from "react-router-dom";
 
 export default function NuevoJuego() {
@@ -30,8 +31,11 @@ export default function NuevoJuego() {
   const [alertMessage, setAlertMessage] = useState("");
 
   const solicitarPermisos = async () => {
-    const result = await Camera.requestPermissions();
-    return result.camera === "granted";
+    if (Capacitor.getPlatform() !== "web") {
+      const result = await Camera.requestPermissions();
+      return result.camera === "granted";
+    }
+    return true; 
   };
 
   const tomarFoto = async () => {
