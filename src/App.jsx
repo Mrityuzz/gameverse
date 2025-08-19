@@ -43,9 +43,9 @@ export default function App() {
   return (
     <IonApp>
       <IonReactRouter>
-        {/* ✅ Menú siempre visible */}
+        {/* ✅ Menú lateral con ID explícito */}
         <IonSplitPane contentId="main" when="true">
-          <IonMenu contentId="main" type="overlay">
+          <IonMenu contentId="main" menuId="mainMenu" type="overlay" autoHide="true">
             <IonHeader>
               <IonToolbar color="dark">
                 <IonTitle style={{ fontFamily: "'Orbitron', sans-serif", color: '#00f0ff' }}>

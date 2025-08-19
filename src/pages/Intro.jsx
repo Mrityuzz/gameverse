@@ -25,7 +25,7 @@ export default function Intro() {
   const [showAlert, setShowAlert] = useState(false);
   const history = useHistory();
 
-  // ✅ Ruta corregida
+  
   const irAExplora = () => history.push('/explora');
   const irASoporte = () => history.push('/soporte');
   const mostrarMensaje = () => setShowAlert(true);

@@ -71,7 +71,7 @@ export default function ListaJuegos({ juegos, onDelete }) {
                   }}
                 >
                   <IonImg
-                    src={juego.portada || "assets/placeholder.jpg"} // 🖼️ fallback si no hay portada
+                    src={juego.portada || "assets/placeholder.jpg"} //
                     alt={juego.titulo}
                     style={{
                       width: "100%",
