@@ -7,7 +7,7 @@
   --ion-color-danger: #ff0033;
   --ion-color-dark: #0a0a0a;
   --ion-color-medium: #2a2a2a;
-  --ion-color-light: #ffffff; /* MÁS CLARO */
+  --ion-color-light: #ffffff; 
 
   --ion-background-color: #0a0a0a;
 
@@ -18,7 +18,7 @@
   --ion-tab-bar-background: #121212;
   --ion-item-background: #1a1a1a;
 
-  --ion-text-color: #e0e0e0; /* TEXTO CLARO */
+  --ion-text-color: #e0e0e0; 
   --ion-input-background: #1f1f1f;
   --ion-input-color: #ffffff;
   --ion-label-color: #cccccc;

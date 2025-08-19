@@ -1,4 +1,4 @@
-/* Layout base */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-/* Logo animado */
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -35,17 +35,17 @@
   }
 }
 
-/* Tarjeta base */
+
 .card {
   padding: 2em;
 }
 
-/* Texto auxiliar */
+
 .read-the-docs {
   color: #888;
 }
 
-/* Tarjeta HUD gamer con imagen como fondo */
+
 .hud-card {
   position: relative;
   background-color: #1a1a1a;
@@ -59,7 +59,7 @@
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
-/* Imagen como fondo completo */
+
 .hud-card ion-img {
   position: absolute;
   top: 0;
@@ -71,7 +71,7 @@
   filter: brightness(0.4);
 }
 
-/* Overlay de contenido */
+
 .hud-card-content {
   position: relative;
   z-index: 2;
@@ -82,7 +82,7 @@
   border-radius: 10px;
 }
 
-/* Título y subtítulo con estilo gamer */
+
 .hud-card-content ion-card-title {
   color: #00c8ff;
   font-size: 1.2rem;
@@ -94,7 +94,7 @@
   font-size: 1rem;
 }
 
-/* Botón gamer discreto */
+
 .neon-button {
   background-color: #00c8ff;
   color: #0a0a0a;
@@ -110,19 +110,19 @@
   box-shadow: 0 0 12px #00c8ff88;
 }
 
-/* Texto brillante más sutil */
+
 .glow-text {
   color: #e0e0e0;
   text-shadow: 0 0 4px #00c8ff, 0 0 8px #00c8ff;
   font-weight: bold;
 }
 
-/* Fondo con gradiente discreto */
+
 .gradient-bg {
   background: linear-gradient(135deg, #0a0a0a, #151515, #1f1f1f);
 }
 
-/* Input gamer con soporte para label flotante */
+
 ion-item.custom-item {
   --background: transparent;
   --color: #ffffff;
@@ -147,14 +147,14 @@ ion-item.custom-item ion-textarea {
   padding: 0.5rem;
 }
 
-/* Segmento visual */
+
 .segment-gamer {
   background-color: #121212;
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(255, 0, 200, 0.2);
 }
 
-/* IonSegment personalizado */
+
 ion-segment-button {
   --color: #a0a0a0;
   --background: transparent;
@@ -173,7 +173,7 @@ ion-segment-button:hover {
   color: #ffffff;
 }
 
-/* Viñetas ultra compactas en listas gamer */
+
 .gamer-list {
   list-style: none;
   padding-left: 0;
@@ -199,7 +199,7 @@ ion-segment-button:hover {
   line-height: 1;
 }
 
-/* FAB principal estilo gamer */
+
 .fab-gamer {
   z-index: 100;
 }
@@ -216,12 +216,12 @@ ion-segment-button:hover {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
 }
 
-/* Lista de opciones flotantes */
+
 .fab-list {
   transition: opacity 0.3s ease;
 }
 
-/* Botones secundarios */
+
 .fab-option {
   --background: #2a2a2a;
   --color: #ffffff;

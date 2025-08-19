@@ -35,13 +35,13 @@ export default function NuevoJuego() {
       const result = await Camera.requestPermissions();
       return result.camera === "granted";
     }
-    return true; 
+    return true;
   };
 
-  const tomarFoto = async () => {
+  const tomarImagen = async (source) => {
     const permiso = await solicitarPermisos();
     if (!permiso) {
-      setAlertMessage("La app no tiene permiso para usar la cámara.");
+      setAlertMessage("La app no tiene permiso para acceder a la cámara o galería.");
       setShowAlert(true);
       return;
     }
@@ -51,12 +51,26 @@ export default function NuevoJuego() {
         resultType: CameraResultType.DataUrl,
         quality: 90,
         allowEditing: false,
-        source: CameraSource.Camera
+        source
       });
-      setPortada(imagen.dataUrl);
+
+      if (imagen?.dataUrl) {
+        setPortada(imagen.dataUrl);
+      } else if (imagen?.webPath) {
+        const response = await fetch(imagen.webPath);
+        const blob = await response.blob();
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPortada(reader.result);
+        };
+        reader.readAsDataURL(blob);
+      } else {
+        setAlertMessage("No se pudo obtener la imagen.");
+        setShowAlert(true);
+      }
     } catch (error) {
-      console.error("Error al tomar la foto:", error);
-      setAlertMessage("No se pudo acceder a la cámara.");
+      console.error("Error al obtener la imagen:", error);
+      setAlertMessage("No se pudo acceder a la imagen.");
       setShowAlert(true);
     }
   };
@@ -115,14 +129,24 @@ export default function NuevoJuego() {
             Sube un nuevo videojuego al Gameverse
           </IonCardSubtitle>
 
-          <IonButton expand="block" onClick={tomarFoto} color="dark" style={{
+          <IonButton expand="block" onClick={() => tomarImagen(CameraSource.Camera)} color="dark" style={{
+            backgroundColor: "#2f2f2f",
+            color: "#00f0ff",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            marginBottom: "0.5rem"
+          }}>
+            📸 Tomar foto
+          </IonButton>
+
+          <IonButton expand="block" onClick={() => tomarImagen(CameraSource.Photos)} color="dark" style={{
             backgroundColor: "#2f2f2f",
             color: "#00f0ff",
             borderRadius: "8px",
             fontWeight: "bold",
             marginBottom: "1rem"
           }}>
-            📸 Tomar portada
+            🖼️ Seleccionar de galería
           </IonButton>
 
           {portada && (

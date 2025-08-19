@@ -43,7 +43,7 @@ export default function App() {
   return (
     <IonApp>
       <IonReactRouter>
-        {/* ✅ Menú lateral con ID explícito */}
+        
         <IonSplitPane contentId="main" when="true">
           <IonMenu contentId="main" menuId="mainMenu" type="overlay" autoHide="true">
             <IonHeader>
